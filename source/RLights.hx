@@ -85,7 +85,7 @@ class Light {
 
 @:include('impl/rlights-impl.h')
 @:native('cpp.Struct<Light>')
-extern class RayLightStruct extends RayLight
+extern class RayLightStruct extends RayLight {}
 
 @:forward
 extern abstract Light(RayLightStruct) to RayLightStruct
