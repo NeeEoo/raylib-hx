@@ -52,10 +52,10 @@ class Main
         cube.materials[0].shader = shader;
 
         // Create lights
-        var light1:Light = RLights.createLight(LIGHT_POINT, new Vector3(-2, 1, -2), Raymath.vector3Zero(), Raylib.YELLOW, shader);
-        var light2:Light = RLights.createLight(LIGHT_POINT, new Vector3(2, 1, 2), Raymath.vector3Zero(), Raylib.RED, shader);
-        var light3:Light = RLights.createLight(LIGHT_POINT, new Vector3(-2, 1, 2), Raymath.vector3Zero(), Raylib.GREEN, shader);
-        var light4:Light = RLights.createLight(LIGHT_POINT, new Vector3(2, 1, -2), Raymath.vector3Zero(), Raylib.BLUE, shader);
+        var light1 = Light.create(LIGHT_POINT, new Vector3(-2, 1, -2), Raymath.vector3Zero(), Raylib.YELLOW, shader);
+        var light2 = Light.create(LIGHT_POINT, new Vector3(2, 1, 2), Raymath.vector3Zero(), Raylib.RED, shader);
+        var light3 = Light.create(LIGHT_POINT, new Vector3(-2, 1, 2), Raymath.vector3Zero(), Raylib.GREEN, shader);
+        var light4 = Light.create(LIGHT_POINT, new Vector3(2, 1, -2), Raymath.vector3Zero(), Raylib.BLUE, shader);
 
         Raylib.setTargetFPS(60); // Set our game to run at 60 frames-per-second
         //--------------------------------------------------------------------------------------
@@ -86,10 +86,10 @@ class Main
 
             // Update light values (actually, only enable/disable them)
             //for (i in 0...lights.length)
-            RLights.updateLightValues(shader, light1);
-            RLights.updateLightValues(shader, light2);
-            RLights.updateLightValues(shader, light3);
-            RLights.updateLightValues(shader, light4);
+            RLights.updateLightValues(shader, light1.value);
+            RLights.updateLightValues(shader, light2.value);
+            RLights.updateLightValues(shader, light3.value);
+            RLights.updateLightValues(shader, light4.value);
             //----------------------------------------------------------------------------------
 
             // Draw
