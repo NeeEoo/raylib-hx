@@ -55,7 +55,7 @@ extern class RayLight
     var attenuationLoc:Int;
 }
 
-@:build(macros.ForwardPlus.forward(value, [
+/*@:build(macros.ForwardPlus.forward(value, [
     (type:Int),
     (enabled:Bool),
     (position:RayVector3),
@@ -81,10 +81,14 @@ class Light {
         var light = RLights.createLight(type, position, target, color, shader);
         return new Light(light);
     }
-}
+}*/
 
-/*@:forward
-extern abstract Light(cpp.Struct<RayLight>) to cpp.Struct<RayLight>
+@:include('impl/rlights-impl.h')
+@:native('cpp.Struct<Light>')
+extern class RayLightStruct extends RayLight
+
+@:forward
+extern abstract Light(RayLightStruct) to RayLightStruct
 {
     inline function new():Void
     {
@@ -98,7 +102,7 @@ extern abstract Light(cpp.Struct<RayLight>) to cpp.Struct<RayLight>
     @:to
     inline function toPointer():cpp.RawPointer<RayLight>
         return cast cpp.RawPointer.addressOf(this);
-}*/
+}
 
 extern enum abstract LightType(LightTypeImpl)
 {
